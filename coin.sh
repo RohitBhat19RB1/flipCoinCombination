@@ -67,3 +67,50 @@ val2=$(($(( $t * 100 )) / (( $flipCoin * 2 ))))
 echo "the heads percentage = $val1 %"
 echo "the tails percentage = $val2 %"
 
+declare -A face_value3
+read -p " enter how many times you want to flip a coin (triplet) : " flipCoin
+isFlip=0;
+FACE_ONE=1;
+FACE_TWO=2;
+h=0;t=0;
+
+while [[ isFlip -lt flipCoin ]]
+do
+        flip=$(( RANDOM%2 + 1 ))
+        case $flip in
+                $FACE_ONE)face="heads"
+                        h=$(($h+1)) ;;
+               $FACE_TWO)face="tails"
+                        t=$(($t+1))   ;;
+              *)face="error" ;;
+        esac
+
+        slip=$(( RANDOM%2 + 1 ))
+        case $slip in
+                $FACE_ONE)face1="heads"
+                        h=$(($h+1)) ;;
+               $FACE_TWO)face1="tails"
+                        t=$(($t+1))    ;;
+              *)face1="error" ;;
+        esac
+
+         klip=$(( RANDOM%2 + 1 ))
+        case $klip in
+                $FACE_ONE)face2="heads"
+                        h=$(($h+1)) ;;
+               $FACE_TWO)face2="tails"
+                        t=$(($t+1))    ;;
+              *)face1="error" ;;
+        esac
+
+ face_value2[$isFlip]=$face$face1$face2
+        #echo $face
+        isFlip=$(( $isFlip + 1 ))
+        done
+
+echo "${face_value2[@]}"
+val1=$(($(( $h * 100 )) / (( $flipCoin * 3 ))))
+val2=$(($(( $t * 100 )) / (( $flipCoin * 3 ))))
+echo "the heads percentage = $val1 %"
+echo "the tails percentage = $val2 %"
+
