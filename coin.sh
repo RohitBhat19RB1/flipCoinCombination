@@ -23,18 +23,18 @@ do
          isFlip=$(( $isFlip + 1))
 done
 
-echo "singlet values : - " "${face_value[@]}"
-val1=$(($(( $h * 100 )) / (( $flipCoin ))))
-val2=$(($(( $t * 100 )) / (( $flipCoin ))))
-echo "The heads percent = $val1 %"
-echo "The tails percent = $val2 %"
+echo "singlet values : ---------> " "${face_value[@]}"
+#val1=$(($(( $h * 100 )) / (( $flipCoin ))))
+#val2=$(($(( $t * 100 )) / (( $flipCoin ))))
+#echo "The heads percent = $val1 %"
+#echo "The tails percent = $val2 %"
 
 declare -A face_value1
 read -p " enter how many times you want to flip a coin (doublet) : " flipCoin
 isFlip=0;
 FACE_ONE=1;
 FACE_TWO=2;
-h=0;t=0;
+#h=0;t=0;
 
 while [[ isFlip -lt flipCoin ]]
 do
@@ -61,18 +61,18 @@ do
         isFlip=$(( $isFlip + 1 ))
         done
 
-echo "${face_value1[@]}"
-val1=$(($(( $h * 100 )) / (( $flipCoin * 2 ))))
-val2=$(($(( $t * 100 )) / (( $flipCoin * 2 ))))
-echo "the heads percentage = $val1 %"
-echo "the tails percentage = $val2 %"
+echo "doublet values are ---------->" "${face_value1[@]}"
+#val1=$(($(( $h * 100 )) / (( $flipCoin * 2 ))))
+#val2=$(($(( $t * 100 )) / (( $flipCoin * 2 ))))
+#echo "the heads percentage = $val1 %"
+#echo "the tails percentage = $val2 %"
 
-declare -A face_value3
+declare -A face_value2
 read -p " enter how many times you want to flip a coin (triplet) : " flipCoin
 isFlip=0;
 FACE_ONE=1;
 FACE_TWO=2;
-h=0;t=0;
+#h=0;t=0;
 
 while [[ isFlip -lt flipCoin ]]
 do
@@ -108,9 +108,22 @@ do
         isFlip=$(( $isFlip + 1 ))
         done
 
-echo "${face_value2[@]}"
-val1=$(($(( $h * 100 )) / (( $flipCoin * 3 ))))
-val2=$(($(( $t * 100 )) / (( $flipCoin * 3 ))))
-echo "the heads percentage = $val1 %"
-echo "the tails percentage = $val2 %"
+echo "triplet values are ----------->" "${face_value2[@]}"
+#val1=$(($(( $h * 100 )) / (( $flipCoin * 3 ))))
+#val2=$(($(( $t * 100 )) / (( $flipCoin * 3 ))))
+#echo "the heads percentage = $val1 %"
+#echo "the tails percentage = $val2 %"
 
+counter=1;
+for all in ${face_value[@]} ${face_value1[@]} ${face_value2[@]}
+do
+array[((counter++))]=$all
+done
+echo "all the combinations are combined here  -------->" "${array[@]}"
+echo "head count = " $h
+echo  "tail count = " $t
+total=$(($h + $t))
+val1=$(($(($h * 100 )) / (( $total ))))
+val2=$(($(($t * 100 )) / (( $total ))))
+echo "the percentage of heads in the combination is $val1 %"
+echo "the percentage of tails in the combination is $val2 %"
